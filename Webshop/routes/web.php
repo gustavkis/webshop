@@ -17,9 +17,14 @@ use App\Http\Controllers\TermekekController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', function () {
+    return view('kosar');
+});
+
 
 
 Route::get('/', [TermekekController::class, 'showProduct'])->name('showProducts');
+//Route::get('/', [TermekekController::class, 'showKosar'])->name('showKosar');
 Route::get('/add-to-cart/{productId}', [TermekekController::class, 'addToCart'])->name('addToCart');
 
 

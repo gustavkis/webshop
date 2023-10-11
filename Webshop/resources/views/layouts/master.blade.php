@@ -12,24 +12,13 @@
 <body>
 
     <nav>
-       
+      
     </nav>
 
 
     @yield('content')
 
-    <footer class="container-fluid bg-dark mt-5">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-12">
-                    <div class="text-white">
-                          Footer
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+   
     
 </body>
 </html>

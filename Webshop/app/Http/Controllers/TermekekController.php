@@ -14,13 +14,16 @@ class TermekekController extends Controller
     {
         $termekek = Termek::all(); 
         return view('welcome', ['termekek' => $termekek]);
-     }
+    }
+    public function showKosar()
+    {
+        $termekek = Termek::all(); 
+        return view('kosar', ['termekek' => $termekek]);
+    }
+  
 
-
-     
-
-     public function addToCart(Request $request, $productId)
-{
+    public function addToCart(Request $request, $productId)
+    {
     $termek = Termek::find($productId);
     
     if ($termek) {
@@ -49,19 +52,6 @@ class TermekekController extends Controller
     }
 
     return redirect()->back();
-}
-
-
-     
-     
-     
-
-     
-
-
-
-
-
-
+    }
 
 }
