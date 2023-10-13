@@ -5,53 +5,44 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Termek;
+use App\Models\Kosar;
 
 class TermekekController extends Controller
 {
     
 
-    public function showProduct()
+
+
+    public function showProduct(Request $request)
     {
-        $termekek = Termek::all(); 
-        return view('welcome', ['termekek' => $termekek]);
+    $termekek = Termek::all();
+    $cartCount = $request->session()->get('cartCount', 0);
+    $cartTotal = $request->session()->get('cartTotal', 0);
+
+    return view('welcome', ['termekek' => $termekek, 'cartCount' => $cartCount, 'cartTotal' => $cartTotal]);
     }
-    public function showKosar()
-    {
-        $termekek = Termek::all(); 
-        return view('kosar', ['termekek' => $termekek]);
-    }
-  
+
+
 
     public function addToCart(Request $request, $productId)
     {
-    $termek = Termek::find($productId);
-    
-    if ($termek) {
-        // Növeld a kosárban lévő termékek számát
-        if ($request->session()->has('cartCount')) {
-            $cartCount = $request->session()->get('cartCount');
-        } else {
-            $cartCount = 0;
-        }
-        $cartCount++;
-        $request->session()->put('cartCount', $cartCount);
+    $product = Termek::find($productId);
 
-        // Ellenőrizd, hogy van-e már kosár a session-ben
-        if ($request->session()->has('cart')) {
-            $cart = $request->session()->get('cart');
-        } else {
-            $cart = [];
-        }
-
-        // Adj hozzá egy új terméket a kosárhoz
-        $cart[] = $termek;
-
-        // Mentsd el a kosarat és a kosárban lévő termékek számát a session-be
-        $request->session()->put('cart', $cart);
-        $request->session()->put('cartCount', $cartCount);
+    if ($product) {
+        $kosar = new Kosar();
+        $kosar->termek_id = $product->id;
+        $kosar->quantity = 1; 
+        $kosar->price = $product->price;
+        $kosar->save();
     }
 
     return redirect()->back();
     }
 
-}
+
+}  
+  
+
+    
+
+

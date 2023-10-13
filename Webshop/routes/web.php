@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KosarController;
 use App\Http\Controllers\TermekekController;
 
 /*
@@ -17,15 +18,20 @@ use App\Http\Controllers\TermekekController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', function () {
-    return view('kosar');
-});
 
 
 
+
+
+
+Route::get('/show', [KosarController::class, 'showCart'])->name('showCart');
+Route::get('/welcome', [KosarController::class, 'showCartView'])->name('showCartView');
 Route::get('/', [TermekekController::class, 'showProduct'])->name('showProducts');
-//Route::get('/', [TermekekController::class, 'showKosar'])->name('showKosar');
-Route::get('/add-to-cart/{productId}', [TermekekController::class, 'addToCart'])->name('addToCart');
+Route::get('/add-product-to-cart/{productId}', [TermekekController::class, 'addToCart'])->name('addToCart');
+Route::get('/add-to-cart/{productId}', [KosarController::class, 'addToCart'])->name('addToCart');
+
+
+
 
 
 

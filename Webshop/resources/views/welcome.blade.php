@@ -6,37 +6,17 @@
 
 <div class="container-fluid">
     
-    @if (session('cart'))
-        @php
-            $totalPrice = 0;
-            
-        @endphp
-
-        @foreach (session('cart') as $termek)
-            <div class="card">
-                <!-- Termék adatai -->
-            </div>
-
-            @php
-                $totalPrice += $termek->price;
-                
-            @endphp
-        @endforeach
     <div class="row justify-content-end">
+    
         <div class="col-4">
-            <h2>Kosár tartalma:</h2>
-            <p>{{ session('cartCount') }} termék | Összesen: {{ $totalPrice }} Ft</p>
+            <h2>Kosár tartalma</h2>
+<p>Mennyiség: {{ $cartCount }}</p>
+<p>Összesen: {{ $cartTotal }} Ft</p>
 
-            @else
-            <div class="row justify-content-end">
-               <div class="col-4">
-                  <h2>A kosár üres</h2>
-                </div>
-            </div> 
-            @endif
         </div>
     </div>    
 </div>
+
 
     
 
@@ -62,6 +42,7 @@
         @endif
     @endforeach
 </div>
+
 @endsection
 
 
