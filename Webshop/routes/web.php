@@ -15,7 +15,7 @@ use App\Http\Controllers\TermekekController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 

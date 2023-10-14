@@ -9,7 +9,7 @@
     <div class="row justify-content-end">
     
         <div class="col-4">
-            <h2>Kosár tartalma</h2>
+            <h2>A kosár tartalma</h2>
 <p>Mennyiség: {{ $cartCount }} | Összesen: {{ $cartTotal }} Ft | <a href="{{ route('showCart') }}" class="btn btn-primary">
     <img src = "./IMG/cart-963.svg" alt="Basket" style='font-size:24px' ></a>
 </p>
@@ -43,6 +43,8 @@
         @endif
     @endforeach
 </div>
+
+
 
 @endsection
 

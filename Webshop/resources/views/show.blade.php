@@ -40,7 +40,17 @@
             
          </tfoot>
     </table>
-   </div>   
+   </div> 
+   
+   <div class="row justify-content-end">
+      <div class="col-4">
+  
+        <p>  <a href={{ url()->previous() }} class="btn btn-success m-4">Vissza</a>
+         <a href="" class="btn btn-success">Tovább</a>  </p>  
+     
+     
+      </div>
+  </div>
 </div>
 
                     
