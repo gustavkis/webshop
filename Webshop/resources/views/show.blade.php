@@ -33,9 +33,10 @@
           @endforeach
           </tbody>
           <tfoot>
-            <th colspan="3"></th>
+            <th colspan="2"></th>
             <th>Összesen:</th>
-            <th >1000  Ft</th>
+            <th > {{ $cartTotal }} </th>
+            <th>Ft</th>
             
          </tfoot>
     </table>

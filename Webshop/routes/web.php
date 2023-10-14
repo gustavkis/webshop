@@ -23,12 +23,14 @@ Route::get('/', function () {
 
 
 
-
+Route::get('show-view', [KosarController::class, 'showCartView'])->name('showCartView'); 
 Route::get('/show', [KosarController::class, 'showCart'])->name('showCart');
 Route::get('/welcome', [KosarController::class, 'showCartView'])->name('showCartView');
 Route::get('/', [TermekekController::class, 'showProduct'])->name('showProducts');
 Route::get('/add-product-to-cart/{productId}', [TermekekController::class, 'addToCart'])->name('addToCart');
 Route::get('/add-to-cart/{productId}', [KosarController::class, 'addToCart'])->name('addToCart');
+
+
 
 
 

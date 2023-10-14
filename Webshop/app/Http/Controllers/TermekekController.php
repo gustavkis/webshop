@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Termek;
 use App\Models\Kosar;
+use Illuminate\Support\DB;
 
 class TermekekController extends Controller
 {
