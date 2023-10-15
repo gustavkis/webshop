@@ -38,15 +38,24 @@
               }
           @endphp
       @endforeach
-      
+    
       @foreach ($products as $product)
-          <tr>
+          <tr id="sor_{{$item->termek->id}}">
               <td>{{ $product['name'] }}</td>
               <td>{{ $product['quantity'] }}</td>
               <td>{{ $product['price'] }}</td>
               <td>{{ $product['quantity'] * $product['price'] }}</td>
               <td>
-                  <a href="" class="btn btn-sm btn-danger">Töröl</a>
+                <form action="{{ route('torol', ['tid' => $item->termek->id]) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-sm btn-danger">Töröl</button>
+                </form>
+              
+              
+               
+
+
               </td>
           </tr>
       @endforeach
@@ -61,27 +70,9 @@
           </tr>
         </tfoot>
 
-
-
-
-
       </table>
 
 
-
-
-
- 
-
-    
-    
-    
-    
-
-
-
-      
-        
     </div> 
    
    <div class="row justify-content-end">
@@ -89,13 +80,17 @@
 
         
   
-        <p>  <a href={{ url()->previous() }} class="btn btn-success m-4">Vissza</a> <a href="" class="btn btn-success">Tovább</a> 
+        <p>  <a href="{{ route('showProducts') }}" class="btn btn-success m-4">Vissza</a> <a href="" class="btn btn-success">Tovább</a> 
           </p>  
      
      
       </div>
   </div>
 </div>
+
+
+  
+
 
                     
 @endsection

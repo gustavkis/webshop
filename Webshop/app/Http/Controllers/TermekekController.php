@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Termek;
 use App\Models\Kosar;
-use Illuminate\Support\DB;
+use Illuminate\Support\Facades\DB;
 
 class TermekekController extends Controller
 {
@@ -35,6 +35,13 @@ class TermekekController extends Controller
         $kosar->quantity = 1; 
         $kosar->price = $product->price;
         $kosar->save();
+
+        $cartCount = DB::select('select SUM(quantity) as total_quantity from kosar')[0]->total_quantity;
+        $cartTotal = DB::select('select SUM(price) as total_price from kosar')[0]->total_price;
+        
+        
+        
+        
     }
 
     return redirect()->back();

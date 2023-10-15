@@ -40,11 +40,9 @@ class KosarController extends Controller
 
         $cartCount = DB::select('select SUM(quantity) as total_quantity from kosar')[0]->total_quantity;
         $cartTotal = DB::select('select SUM(price) as total_price from kosar')[0]->total_price;
-        $productCount = DB::select('SELECT SUM(quantity) as total_quantity FROM kosar WHERE termek_id = ?', [$product->id]);
         
         
-        $productTotalPrice = DB::select('SELECT SUM(price) as total_price FROM kosar WHERE termek_id = ?', [$product->id]);
-        return redirect()->back()->with(compact('cartCount', 'cartTotal', 'productCount', 'productTotalPrice'));
+        return redirect()->back()->with(compact('cartCount', 'cartTotal'));
        
     }
 
@@ -57,6 +55,20 @@ class KosarController extends Controller
     {
         return view('welcome', compact('cartCount', 'cartTotal', 'cartTotal'));
     }
+
+
+
+    public function torol(Request $request)
+{
+    $productId = $request->input('tid'); 
+    Kosar::where('termek_id', $productId)->delete();
+
+    
+    return redirect()->back(); 
+}
+
+
+
 }
 
     
