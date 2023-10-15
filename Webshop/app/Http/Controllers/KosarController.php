@@ -34,15 +34,18 @@ class KosarController extends Controller
     if ($product) {
         $kosar = new Kosar();
         $kosar->termek_id = $product->id;
-        $kosar->quantity = 1; // Módosíthatod a kívánt mennyiségre.
+        $kosar->quantity = 1; 
         $kosar->price = $product->price;
         $kosar->save();
 
         $cartCount = DB::select('select SUM(quantity) as total_quantity from kosar')[0]->total_quantity;
         $cartTotal = DB::select('select SUM(price) as total_price from kosar')[0]->total_price;
+        $productCount = DB::select('SELECT SUM(quantity) as total_quantity FROM kosar WHERE termek_id = ?', [$product->id]);
         
-
-       return redirect()->back()->with(compact('cartCount', 'cartTotal'));
+        
+        $productTotalPrice = DB::select('SELECT SUM(price) as total_price FROM kosar WHERE termek_id = ?', [$product->id]);
+        return redirect()->back()->with(compact('cartCount', 'cartTotal', 'productCount', 'productTotalPrice'));
+       
     }
 
     return redirect()->back();
