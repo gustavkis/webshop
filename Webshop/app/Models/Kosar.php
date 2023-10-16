@@ -10,7 +10,8 @@ class Kosar extends Model
     use HasFactory;
     public $table="kosar";
     public $primaryKey="termek_id";
-    public $timestamp= false;
+    
+    public $timestamps = false;
     public $guarded = [];
 
     public function termek()

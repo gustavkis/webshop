@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('termekek', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('picture');
-            $table->string('price');
-            $table->timestamps();
+        Schema::table('termekek', function (Blueprint $table) {
+            //
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('termekek');
+        Schema::table('termekek', function (Blueprint $table) {
+            //
+        });
     }
 };

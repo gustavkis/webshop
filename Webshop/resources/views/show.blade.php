@@ -6,9 +6,9 @@
 
 
 <div class="container">
-    <div class="row justify-content-center">
+    <div>
    
-      <table class="table table-info table-striped table-hover">
+      <table class="table table-info table-striped table-hover m-4">
         <thead>
            <tr>
               <th>Termék neve:</th>
@@ -51,11 +51,6 @@
                   @method('DELETE')
                   <button type="submit" class="btn btn-sm btn-danger">Töröl</button>
                 </form>
-              
-              
-               
-
-
               </td>
           </tr>
       @endforeach
@@ -71,12 +66,12 @@
         </tfoot>
 
       </table>
+    </div>
 
-
-    </div> 
+     
    
    <div class="row justify-content-end">
-      <div class="col-4">
+      <div class="col-12 col-md-6">
 
         
   

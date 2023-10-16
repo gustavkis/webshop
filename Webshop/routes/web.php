@@ -18,7 +18,9 @@ use App\Http\Controllers\TermekekController;
 Route::get('/welcome', function () {
     return view('welcome');
 });
+Route::post('/termek/feltoltes/1', [TermekekController::class, 'kepFeltoltes'])->name('kepFeltoltes');
 
+Route::post('/kep-feltoltes', [TermekController::class, 'kepFeltoltes'])->name('kepFeltoltes');
 
 
 
